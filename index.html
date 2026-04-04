@@ -4,8 +4,41 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Life In Frames — Rakesh Kodathala | Cinematic Video Editor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta name="description" content="Cinematic video editing portfolio by Rakesh Kodathala. Specializing in YouTube editing, Instagram Reels, documentary storytelling, and brand videos. Built in DaVinci Resolve.">
+<meta name="theme-color" content="#0a0a0c">
+<meta property="og:title" content="Life In Frames — Rakesh Kodathala | Cinematic Video Editor">
+<meta property="og:description" content="Cinematic storytelling, emotional edits, and scroll-stopping content — crafted with intention in DaVinci Resolve.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://your-username.github.io/life-in-frames">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Life In Frames — Rakesh Kodathala">
+<meta name="twitter:description" content="Cinematic video editing portfolio. YouTube editing, Reels, documentary & brand storytelling.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Life In Frames",
+  "description": "Cinematic video editing portfolio by Rakesh Kodathala. YouTube editing, Instagram Reels, documentary storytelling, and brand videos.",
+  "url": "https://your-username.github.io/life-in-frames",
+  "founder": {
+    "@type": "Person",
+    "name": "Rakesh Kodathala",
+    "email": "kodathalarakesh@gmail.com",
+    "jobTitle": "Cinematic Video Editor",
+    "sameAs": [
+      "https://www.youtube.com/@LifeInFramesByRK",
+      "https://www.instagram.com/life_in_fr4mes/",
+      "https://www.fiverr.com/sellers/rakesh_kod"
+    ]
+  },
+  "serviceType": ["Video Editing", "Color Grading", "Sound Design", "Motion Graphics"],
+  "areaServed": "Worldwide"
+}
+</script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -16,8 +49,8 @@
   --accent2:#c47a1a;
   --accent-glow:rgba(232,168,56,.15);
   --text:#f0ece4;
-  --text-dim:#8a8680;
-  --text-muted:#555;
+  --text-dim:#9e9a94;
+  --text-muted:#767676;
   --red:#e04040;
   --teal:#38c8b4;
   --blue:#4888e8;
@@ -58,6 +91,8 @@ nav{position:fixed;top:0;left:0;width:100%;padding:24px 48px;display:flex;justif
 .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--accent);transition:width .3s}
 .nav-links a:hover{color:var(--text)}
 .nav-links a:hover::after{width:100%}
+.hamburger{display:none;cursor:pointer}
+.nav-overlay{display:none}
 
 /* ═══ HERO SECTION ═══ */
 .hero{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;overflow:hidden}
@@ -72,7 +107,7 @@ nav{position:fixed;top:0;left:0;width:100%;padding:24px 48px;display:flex;justif
 @keyframes lineDrift{0%,100%{opacity:0;transform:translateY(-100%)}50%{opacity:1;transform:translateY(100%)}}
 
 .hero-content{position:relative;z-index:2;text-align:center;padding:0 24px}
-.hero-tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--accent);margin-bottom:32px;opacity:0;animation:fadeUp .8s 2.6s forwards}
+.hero-tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--accent);margin-bottom:32px;opacity:0;transform:translateY(20px);animation:fadeUp .8s 2.6s forwards}
 .hero-title{font-family:'Playfair Display',serif;font-size:clamp(48px,8vw,120px);font-weight:700;line-height:.95;margin-bottom:24px}
 .hero-title .word{display:inline-block;opacity:0;transform:translateY(60px) rotateX(-15deg);animation:wordReveal .9s forwards}
 .hero-title .word:nth-child(1){animation-delay:2.8s}
@@ -93,7 +128,8 @@ nav{position:fixed;top:0;left:0;width:100%;padding:24px 48px;display:flex;justif
 .hero-cta svg{position:relative;z-index:1;transition:transform .3s}
 .hero-cta:hover svg{transform:translateX(4px)}
 
-.scroll-indicator{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeUp .8s 4s forwards}
+.scroll-indicator{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeUp .8s 4s forwards;transition:opacity .5s}
+.scroll-indicator.hidden{opacity:0!important}
 .scroll-indicator span{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--text-muted)}
 .scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--accent),transparent);animation:scrollPulse 2s infinite}
 @keyframes scrollPulse{0%,100%{opacity:.3;transform:scaleY(.5)}50%{opacity:1;transform:scaleY(1)}}
@@ -164,6 +200,25 @@ section{padding:120px 48px;position:relative}
 .tool-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px;transform:scaleX(0);transform-origin:left;transition:transform 1.2s ease}
 .visible .tool-fill{transform:scaleX(1)}
 
+/* ═══ PORTFOLIO SHOWCASE ═══ */
+.portfolio-section{max-width:1200px;margin:0 auto}
+.portfolio-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:48px}
+.portfolio-card{position:relative;border-radius:4px;overflow:hidden;border:1px solid rgba(255,255,255,.04);background:var(--surface);transition:all .5s}
+.portfolio-card:hover{border-color:rgba(232,168,56,.15);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.portfolio-thumb{position:relative;width:100%;aspect-ratio:16/9;background:var(--surface2);overflow:hidden}
+.portfolio-thumb iframe{width:100%;height:100%;border:none}
+.portfolio-thumb .placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:linear-gradient(135deg,var(--surface2),var(--surface));cursor:pointer;transition:all .4s}
+.portfolio-thumb .placeholder:hover{background:linear-gradient(135deg,rgba(232,168,56,.1),var(--surface))}
+.portfolio-thumb .placeholder svg{color:var(--accent);opacity:.7;transition:all .3s}
+.portfolio-thumb .placeholder:hover svg{opacity:1;transform:scale(1.1)}
+.portfolio-thumb .placeholder span{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-dim)}
+.portfolio-info{padding:20px 24px}
+.portfolio-info h3{font-size:17px;font-weight:600;margin-bottom:6px}
+.portfolio-info p{font-size:13px;color:var(--text-dim);line-height:1.6;font-weight:300}
+.portfolio-info .portfolio-tags{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.portfolio-info .portfolio-tags span{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;border:1px solid rgba(232,168,56,.2);border-radius:2px;color:var(--accent)}
+@media(max-width:900px){.portfolio-grid{grid-template-columns:1fr}}
+
 /* ═══ CALLOUT SECTION ═══ */
 .callout{max-width:900px;margin:0 auto;text-align:center;padding:100px 48px;position:relative}
 .callout::before{content:'"';font-family:'Playfair Display',serif;font-size:200px;color:rgba(232,168,56,.08);position:absolute;top:-20px;left:50%;transform:translateX(-50%);line-height:1}
@@ -213,9 +268,31 @@ footer{padding:48px;border-top:1px solid rgba(255,255,255,.04);display:flex;just
   .services-grid{grid-template-columns:1fr}
   .tools-grid{grid-template-columns:repeat(2,1fr)}
   .stats-bar{grid-template-columns:repeat(2,1fr)}
-  .nav-links{display:none}
+  .nav-links{display:none;flex-direction:column;position:fixed;top:0;right:0;width:260px;height:100vh;background:var(--surface);padding:80px 32px 32px;gap:24px;border-left:1px solid rgba(255,255,255,.06);z-index:101}
+  .nav-links.open{display:flex}
+  .hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;z-index:102;padding:8px}
+  .hamburger span{display:block;width:24px;height:2px;background:var(--text);transition:all .3s}
+  .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+  .hamburger.active span:nth-child(2){opacity:0}
+  .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+  .nav-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:100}
+  .nav-overlay.open{display:block}
+  .cursor-dot,.cursor-ring{display:none}
   .cta-buttons{flex-direction:column;align-items:center}
   footer{flex-direction:column;gap:24px;text-align:center}
+}
+@media(hover:none) and (pointer:coarse){
+  .cursor-dot,.cursor-ring{display:none!important}
+}
+
+/* ═══ REDUCED MOTION ═══ */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .loader{display:none}
+  .hero-tag,.hero-title .word,.hero-sub,.hero-cta,.scroll-indicator,nav{opacity:1;transform:none}
+  .reveal{opacity:1;transform:none}
+  .skills-track{animation:none}
+  .cursor-dot,.cursor-ring{display:none}
 }
 </style>
 </head>
@@ -236,16 +313,24 @@ footer{padding:48px;border-top:1px solid rgba(255,255,255,.04);display:flex;just
   <div class="loader-pct" id="loaderPct">0%</div>
 </div>
 
+<!-- SKIP LINK -->
+<a href="#about" class="skip-link" style="position:absolute;top:-100%;left:16px;background:var(--accent);color:var(--bg);padding:8px 16px;z-index:10001;font-size:14px;text-decoration:none;border-radius:0 0 4px 4px;transition:top .3s" onfocus="this.style.top='0'" onblur="this.style.top='-100%'">Skip to content</a>
+
 <!-- NAV -->
 <nav>
   <div class="nav-logo">LIFE IN<span> FRAMES</span></div>
-  <div class="nav-links">
+  <div class="hamburger" id="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
+    <span></span><span></span><span></span>
+  </div>
+  <div class="nav-overlay" id="navOverlay"></div>
+  <div class="nav-links" id="navLinks">
     <a href="#about">About</a>
     <a href="#services">Services</a>
+    <a href="#work">Work</a>
     <a href="#tools">Tools</a>
     <a href="#process">Process</a>
     <a href="#contact">Contact</a>
-    <a href="https://www.fiverr.com/sellers/rakesh_kod" target="_blank" style="color:var(--accent)">Hire Me</a>
+    <a href="https://www.fiverr.com/sellers/rakesh_kod" target="_blank" rel="noopener noreferrer" style="color:var(--accent)">Hire Me</a>
   </div>
 </nav>
 
@@ -370,6 +455,69 @@ footer{padding:48px;border-top:1px solid rgba(255,255,255,.04);display:flex;just
   </div>
 </section>
 
+<!-- PORTFOLIO SHOWCASE -->
+<section id="work">
+  <div class="portfolio-section">
+    <div class="section-tag reveal">Selected Work</div>
+    <h2 class="section-title reveal reveal-delay-1">Recent <span style="color:var(--accent);font-style:italic">Edits</span></h2>
+    <p class="section-desc reveal reveal-delay-2">A selection of cinematic edits, reels, and storytelling projects.</p>
+    <div class="portfolio-grid">
+      <div class="portfolio-card reveal">
+        <div class="portfolio-thumb">
+          <div class="placeholder" onclick="this.outerHTML='<iframe src=\'https://www.youtube.com/embed/VIDEO_ID_1?autoplay=1\' allow=\'autoplay;encrypted-media\' allowfullscreen loading=\'lazy\'></iframe>'">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <span>Click to play</span>
+          </div>
+        </div>
+        <div class="portfolio-info">
+          <h3>Project Title Here</h3>
+          <p>Brief description of the edit — what the client needed and the cinematic approach you took.</p>
+          <div class="portfolio-tags"><span>YouTube</span><span>Color Grade</span><span>Sound Design</span></div>
+        </div>
+      </div>
+      <div class="portfolio-card reveal reveal-delay-1">
+        <div class="portfolio-thumb">
+          <div class="placeholder" onclick="this.outerHTML='<iframe src=\'https://www.youtube.com/embed/VIDEO_ID_2?autoplay=1\' allow=\'autoplay;encrypted-media\' allowfullscreen loading=\'lazy\'></iframe>'">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <span>Click to play</span>
+          </div>
+        </div>
+        <div class="portfolio-info">
+          <h3>Project Title Here</h3>
+          <p>Brief description of the edit — what the client needed and the cinematic approach you took.</p>
+          <div class="portfolio-tags"><span>Reels</span><span>Motion Graphics</span></div>
+        </div>
+      </div>
+      <div class="portfolio-card reveal reveal-delay-2">
+        <div class="portfolio-thumb">
+          <div class="placeholder" onclick="this.outerHTML='<iframe src=\'https://www.youtube.com/embed/VIDEO_ID_3?autoplay=1\' allow=\'autoplay;encrypted-media\' allowfullscreen loading=\'lazy\'></iframe>'">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <span>Click to play</span>
+          </div>
+        </div>
+        <div class="portfolio-info">
+          <h3>Project Title Here</h3>
+          <p>Brief description of the edit — what the client needed and the cinematic approach you took.</p>
+          <div class="portfolio-tags"><span>Documentary</span><span>Voiceover</span></div>
+        </div>
+      </div>
+      <div class="portfolio-card reveal reveal-delay-3">
+        <div class="portfolio-thumb">
+          <div class="placeholder" onclick="this.outerHTML='<iframe src=\'https://www.youtube.com/embed/VIDEO_ID_4?autoplay=1\' allow=\'autoplay;encrypted-media\' allowfullscreen loading=\'lazy\'></iframe>'">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <span>Click to play</span>
+          </div>
+        </div>
+        <div class="portfolio-info">
+          <h3>Project Title Here</h3>
+          <p>Brief description of the edit — what the client needed and the cinematic approach you took.</p>
+          <div class="portfolio-tags"><span>Brand Story</span><span>Color Grade</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CALLOUT -->
 <div class="callout reveal">
   <p class="callout-text">Every frame is a <span class="em">decision</span>. Every cut is a <span class="em">feeling</span>. I don't just edit video — I craft the <span class="em">experience</span> of watching it.</p>
@@ -490,19 +638,19 @@ footer{padding:48px;border-top:1px solid rgba(255,255,255,.04);display:flex;just
     <h2 class="section-title">Ready to Tell<br>Your <span style="color:var(--accent);font-style:italic">Story</span>?</h2>
     <p class="section-desc" style="margin:0 auto">Send me your footage, your vision, or just an idea. I'll turn it into something people can't stop watching.</p>
     <div class="cta-buttons">
-      <a href="https://www.fiverr.com/sellers/rakesh_kod" class="btn-primary" target="_blank">Hire Me on Fiverr</a>
-      <a href="https://www.youtube.com/@LifeInFramesByRK" class="btn-outline" target="_blank">Watch on YouTube</a>
+      <a href="https://www.fiverr.com/sellers/rakesh_kod" class="btn-primary" target="_blank" rel="noopener noreferrer">Hire Me on Fiverr</a>
+      <a href="https://www.youtube.com/@LifeInFramesByRK" class="btn-outline" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
     </div>
     <div style="margin-top:48px;display:flex;justify-content:center;gap:32px;flex-wrap:wrap">
-      <a href="mailto:kodathalarakesh@gmail.com" style="display:flex;align-items:center;gap:8px;color:var(--text-dim);text-decoration:none;font-size:14px;transition:color .3s;letter-spacing:.5px" onmouseenter="this.style.color='#e8a838'" onmouseleave="this.style.color='#8a8680'">
+      <a href="mailto:kodathalarakesh@gmail.com" style="display:flex;align-items:center;gap:8px;color:var(--text-dim);text-decoration:none;font-size:14px;transition:color .3s;letter-spacing:.5px" onmouseenter="this.style.color='#e8a838'" onmouseleave="this.style.color='#9e9a94'">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         kodathalarakesh@gmail.com
       </a>
-      <a href="https://www.instagram.com/life_in_fr4mes/" target="_blank" style="display:flex;align-items:center;gap:8px;color:var(--text-dim);text-decoration:none;font-size:14px;transition:color .3s;letter-spacing:.5px" onmouseenter="this.style.color='#e8a838'" onmouseleave="this.style.color='#8a8680'">
+      <a href="https://www.instagram.com/life_in_fr4mes/" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:8px;color:var(--text-dim);text-decoration:none;font-size:14px;transition:color .3s;letter-spacing:.5px" onmouseenter="this.style.color='#e8a838'" onmouseleave="this.style.color='#9e9a94'">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
         @life_in_fr4mes
       </a>
-      <a href="https://www.youtube.com/@LifeInFramesByRK" target="_blank" style="display:flex;align-items:center;gap:8px;color:var(--text-dim);text-decoration:none;font-size:14px;transition:color .3s;letter-spacing:.5px" onmouseenter="this.style.color='#e8a838'" onmouseleave="this.style.color='#8a8680'">
+      <a href="https://www.youtube.com/@LifeInFramesByRK" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:8px;color:var(--text-dim);text-decoration:none;font-size:14px;transition:color .3s;letter-spacing:.5px" onmouseenter="this.style.color='#e8a838'" onmouseleave="this.style.color='#9e9a94'">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor" stroke="none"/></svg>
         Life In Frames
       </a>
@@ -514,9 +662,9 @@ footer{padding:48px;border-top:1px solid rgba(255,255,255,.04);display:flex;just
 <footer>
   <div class="footer-left">© 2026 LIFE IN FRAMES — Rakesh Kodathala</div>
   <div class="footer-socials">
-    <a href="https://www.youtube.com/@LifeInFramesByRK" target="_blank">YouTube</a>
-    <a href="https://www.instagram.com/life_in_fr4mes/" target="_blank">Instagram</a>
-    <a href="https://www.fiverr.com/sellers/rakesh_kod" target="_blank">Fiverr</a>
+    <a href="https://www.youtube.com/@LifeInFramesByRK" target="_blank" rel="noopener noreferrer">YouTube</a>
+    <a href="https://www.instagram.com/life_in_fr4mes/" target="_blank" rel="noopener noreferrer">Instagram</a>
+    <a href="https://www.fiverr.com/sellers/rakesh_kod" target="_blank" rel="noopener noreferrer">Fiverr</a>
     <a href="mailto:kodathalarakesh@gmail.com">Email</a>
   </div>
 </footer>
@@ -604,17 +752,42 @@ const counterObserver = new IntersectionObserver((entries) => {
 }, { threshold: .5 });
 statNumbers.forEach(el => counterObserver.observe(el));
 
-// ═══ WAVEFORM ANIMATION ═══
+// ═══ WAVEFORM ANIMATION (throttled — was rAF, now ~10fps) ═══
 const waveBars = waveform.querySelectorAll('span');
-function animateWave() {
+setInterval(() => {
   waveBars.forEach(bar => {
-    const h = Math.random() * 30 + 5;
-    bar.style.height = h + 'px';
-    bar.style.transition = 'height .15s ease';
+    bar.style.height = (Math.random() * 30 + 5) + 'px';
+    bar.style.transition = 'height .1s ease';
   });
-  requestAnimationFrame(animateWave);
+}, 100);
+
+// ═══ HAMBURGER MENU ═══
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+const navOverlay = document.getElementById('navOverlay');
+function toggleMenu() {
+  hamburger.classList.toggle('active');
+  navLinks.classList.toggle('open');
+  navOverlay.classList.toggle('open');
 }
-animateWave();
+hamburger.addEventListener('click', toggleMenu);
+navOverlay.addEventListener('click', toggleMenu);
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  if (navLinks.classList.contains('open')) toggleMenu();
+}));
+
+// ═══ HIDE SCROLL INDICATOR ON SCROLL ═══
+const scrollInd = document.querySelector('.scroll-indicator');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 100) scrollInd.classList.add('hidden');
+  else scrollInd.classList.remove('hidden');
+}, { passive: true });
+
+// ═══ HIDE CURSOR ON TOUCH DEVICES ═══
+if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+  dot.style.display = 'none';
+  ring.style.display = 'none';
+}
 
 // ═══ SMOOTH ANCHOR SCROLL ═══
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
